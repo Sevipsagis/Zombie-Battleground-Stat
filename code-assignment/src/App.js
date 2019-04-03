@@ -10,6 +10,7 @@ class App extends Component {
     return (
       <Switch>
         <Route exact path="/" component={Home} />
+        <Route path="/card/" component={Card} />
         <Route component={Error} />
       </Switch>
     )

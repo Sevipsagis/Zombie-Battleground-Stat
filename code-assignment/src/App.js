@@ -1,25 +1,30 @@
 import React, { Component } from 'react';
 import logo from './logo.svg';
 import './App.css';
+import Header from './Component/Header';
+import CardTable from './Component/Table/CardTable'
+import axios from 'axios';
 
 class App extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {};
+  }
+
+  componentDidMount() {
+    axios.get("https://api.loom.games/zb/v1/cards").then(res => {
+      this.setState(res.data);
+      console.log(this.state)
+    })
+  }
+
   render() {
     return (
-      <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <p>
-            Edit <code>src/App.js</code> and save to reload.
-          </p>
-          <a
-            className="App-link"
-            href="https://reactjs.org"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Learn React
-          </a>
-        </header>
+      <div calssName="container">
+        <div>
+          <Header />
+          <CardTable cardData={this.state.cards} />
+        </div>
       </div>
     );
   }

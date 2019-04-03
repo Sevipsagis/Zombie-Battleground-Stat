@@ -1,27 +1,23 @@
 import React, { Component } from 'react';
-import Header from './Component/Header';
-import CardTable from './Component/Table/CardTable'
-import axios from 'axios';
+import { BrowserRouter, Route, Switch } from 'react-router-dom';
+import Home from './Container/Home';
+import Card from './Container/Card';
+import Error from './Container/Error'
 
 class App extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {};
-  }
 
-  componentDidMount() {
-    axios.get("https://api.loom.games/zb/v1/cards").then(res => {
-      this.setState(res.data);
-      console.log(this.state)
-    })
+  renderRouter() {
+    return (
+      <Switch>
+        <Route exact path="/" component={Home} />
+        <Route component={Error} />
+      </Switch>
+    )
   }
 
   render() {
     return (
-      <div className="container mt-5">
-        <Header />
-        <CardTable cardData={this.state.cards} />
-      </div>
+      <BrowserRouter>{this.renderRouter()}</BrowserRouter>
     );
   }
 }

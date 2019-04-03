@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import './App.css';
 import Header from '../Component/Header';
 import CardTable from '../Component/Table/CardTable'
 import axios from 'axios';

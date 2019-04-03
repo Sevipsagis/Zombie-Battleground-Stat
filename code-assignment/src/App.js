@@ -1,6 +1,4 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
-import './App.css';
 import Header from './Component/Header';
 import CardTable from './Component/Table/CardTable'
 import axios from 'axios';
@@ -20,11 +18,9 @@ class App extends Component {
 
   render() {
     return (
-      <div calssName="container">
-        <div>
-          <Header />
-          <CardTable cardData={this.state.cards} />
-        </div>
+      <div className="container mt-5">
+        <Header />
+        <CardTable cardData={this.state.cards} />
       </div>
     );
   }
